@@ -1,8 +1,13 @@
+import { Canvas } from "@react-three/fiber";
+
 function App() {
   return (
-    <>
-      <h1>3D Unicorn</h1>
-    </>
+    <Canvas>
+      <mesh>
+        <torusKnotGeometry />
+        <meshNormalMaterial />
+      </mesh>
+    </Canvas>
   );
 }
 
