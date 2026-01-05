@@ -1,10 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
+import Experience from "./Experience.tsx";
+import { Canvas } from "@react-three/fiber";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <Canvas>
+      <Experience />
+    </Canvas>
   </StrictMode>
 );
