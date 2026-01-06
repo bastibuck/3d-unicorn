@@ -7,7 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Canvas camera={{ position: [5, 1, 5] }} dpr={[1, 2]}>
+    <Canvas camera={{ position: [5, 1, 5] }} dpr={[1, 2]} shadows>
       <OrbitControls
         autoRotate
         autoRotateSpeed={0.7}

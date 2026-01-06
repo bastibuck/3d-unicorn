@@ -7,8 +7,8 @@ const Experience: React.FC = () => {
 
   useFrame((_state, delta) => {
     if (torusMeshRef.current) {
-      torusMeshRef.current.rotation.y += delta * 0.3;
-      torusMeshRef.current.rotation.x += delta * 0.3;
+      torusMeshRef.current.rotation.y -= delta * 0.5;
+      torusMeshRef.current.rotation.x += delta * 0.5;
     }
   });
 
