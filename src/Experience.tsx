@@ -6,6 +6,7 @@ import {
   Text3D,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { useControls } from "leva";
 import { useRef } from "react";
 import { Object3D } from "three";
 
@@ -19,6 +20,17 @@ const Experience: React.FC = () => {
     }
   });
 
+  const torusControls = useControls("torusKnot", {
+    position: {
+      value: { x: 0, z: 0 },
+      min: -2,
+      max: 2,
+      step: 0.05,
+    },
+    color: "#ffffff",
+    label: "Wohooo",
+  });
+
   return (
     <>
       <ambientLight intensity={0.5} />
@@ -26,16 +38,16 @@ const Experience: React.FC = () => {
 
       <mesh
         scale={1}
-        position={[0, 2, 0]}
+        position={[torusControls.position.x, 2, torusControls.position.z]}
         ref={torusMeshRef}
         castShadow
         receiveShadow
       >
         <torusKnotGeometry args={[undefined, undefined, 128, 32]} />
-        <meshStandardMaterial />
+        <meshStandardMaterial color={torusControls.color} />
 
         <Html position={[2, 0, 0]} wrapperClass="unicorn-label" center occlude>
-          Wohooooo
+          {torusControls.label}
         </Html>
       </mesh>
 
@@ -80,11 +92,10 @@ const Experience: React.FC = () => {
       >
         <planeGeometry />
         <MeshReflectorMaterial
-          color={"#acacacff"}
-          resolution={512}
-          blur={[400, 400]}
+          color="#c4c4c4"
+          resolution={256}
+          blur={[500, 500]}
           mixBlur={0.8}
-          mirror={0.2}
         />
       </mesh>
     </>
