@@ -6,10 +6,15 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import PerformanceMonitor from "./debug/PerformanceMonitor.tsx";
 import DebugControls from "./debug/DebugControls.tsx";
+import Environment from "./Environment.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Canvas camera={{ position: [5, 1, 5] }} dpr={[1, 2]} shadows>
+      <Environment />
+
+      <Experience />
+
       <OrbitControls
         autoRotate
         autoRotateSpeed={0.7}
@@ -21,8 +26,6 @@ createRoot(document.getElementById("root")!).render(
         maxDistance={15}
         target={[0, 2, 0]}
       />
-
-      <Experience />
 
       <PerformanceMonitor />
     </Canvas>

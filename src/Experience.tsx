@@ -33,9 +33,6 @@ const Experience: React.FC = () => {
 
   return (
     <>
-      <ambientLight intensity={0.5} />
-      <directionalLight intensity={4} position={[5, 4, 7]} castShadow />
-
       <mesh
         scale={1}
         position={[torusControls.position.x, 2, torusControls.position.z]}
@@ -51,34 +48,38 @@ const Experience: React.FC = () => {
         </Html>
       </mesh>
 
-      <Float speed={2} floatIntensity={2} position={[0, 6.5, -20]}>
+      <Float speed={2} floatIntensity={2} position={[0, 7, -5]}>
         <Center>
           <Text3D
-            scale={2}
+            scale={1.5}
             font={"https://drei.pmnd.rs/fonts/helvetiker_regular.typeface.json"}
             bevelEnabled
             bevelSegments={10}
             bevelSize={0.08}
             letterSpacing={0.1}
+            castShadow
+            receiveShadow
           >
             Imma be
-            <meshNormalMaterial />
+            <meshStandardMaterial />
           </Text3D>
         </Center>
       </Float>
 
-      <Float speed={3} floatIntensity={1.5} position={[0, 4.5, -20]}>
+      <Float speed={3} floatIntensity={1.5} position={[0, 4.5, -5]}>
         <Center>
           <Text3D
-            scale={2}
+            scale={1.5}
             font={"https://drei.pmnd.rs/fonts/helvetiker_regular.typeface.json"}
             bevelEnabled
             bevelSegments={10}
             bevelSize={0.08}
             letterSpacing={0.1}
+            castShadow
+            receiveShadow
           >
             a unicorn
-            <meshNormalMaterial />
+            <meshStandardMaterial />
           </Text3D>
         </Center>
       </Float>
@@ -88,7 +89,6 @@ const Experience: React.FC = () => {
         position={[0, 0, 0]}
         scale={30}
         receiveShadow
-        castShadow
       >
         <planeGeometry />
         <MeshReflectorMaterial
