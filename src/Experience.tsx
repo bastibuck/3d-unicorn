@@ -1,3 +1,4 @@
+import { Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { type Mesh } from "three";
@@ -26,6 +27,15 @@ const Experience: React.FC = () => {
       >
         <torusKnotGeometry args={[undefined, undefined, 128, 32]} />
         <meshStandardMaterial />
+
+        <Html
+          position={[2, 0, 0]}
+          wrapperClass="unicorn-label"
+          center
+          occlude={[torusMeshRef]}
+        >
+          Imma be an unicorn
+        </Html>
       </mesh>
 
       <mesh
