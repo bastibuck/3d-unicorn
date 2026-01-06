@@ -5,38 +5,38 @@ import { type Mesh } from "three";
 const Experience: React.FC = () => {
   const torusMeshRef = useRef<Mesh>(null);
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (torusMeshRef.current) {
       torusMeshRef.current.rotation.y += delta * 0.3;
       torusMeshRef.current.rotation.x += delta * 0.3;
     }
-
-    const cameraCirclePositionAngle = state.clock.elapsedTime * 0.2;
-    state.camera.position.x = Math.sin(cameraCirclePositionAngle) * 6;
-    state.camera.position.z = Math.cos(cameraCirclePositionAngle) * 6;
-    state.camera.lookAt(0, 0, 0);
   });
 
   return (
     <>
-      <mesh position={[-2, 0.5, 1]}>
-        <boxGeometry />
-        <meshBasicMaterial color="deeppink" wireframe />
-      </mesh>
+      <ambientLight intensity={0.5} />
+      <directionalLight intensity={5} position={[2, 4, 3]} castShadow />
 
-      <mesh scale={1.1} position={[2, 2, 2]} ref={torusMeshRef}>
+      <mesh
+        scale={1}
+        position={[0, 2, 0]}
+        ref={torusMeshRef}
+        castShadow
+        receiveShadow
+      >
         <torusKnotGeometry args={[undefined, undefined, 128, 32]} />
-        <meshNormalMaterial />
+        <meshStandardMaterial />
       </mesh>
 
-      <mesh position={[0, 1, 0]}>
-        <sphereGeometry />
-        <meshBasicMaterial color="mediumpurple" />
-      </mesh>
-
-      <mesh rotation-x={-Math.PI * 0.5} position={[0, 0, 0]} scale={10}>
+      <mesh
+        rotation-x={-Math.PI * 0.5}
+        position={[0, 0, 0]}
+        scale={30}
+        receiveShadow
+        castShadow
+      >
         <planeGeometry />
-        <meshBasicMaterial color="green" />
+        <meshStandardMaterial color={"#aaaaaa"} />
       </mesh>
     </>
   );

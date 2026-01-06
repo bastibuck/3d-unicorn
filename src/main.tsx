@@ -3,10 +3,23 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import Experience from "./Experience.tsx";
 import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Canvas camera={{ position: [0, 1, 0] }} dpr={[1, 2]}>
+    <Canvas camera={{ position: [5, 1, 5] }} dpr={[1, 2]}>
+      <OrbitControls
+        autoRotate
+        autoRotateSpeed={0.7}
+        enablePan={false}
+        reverseHorizontalOrbit
+        minPolarAngle={0.45}
+        maxPolarAngle={1.6}
+        minDistance={4}
+        maxDistance={15}
+        target={[0, 2, 0]}
+      />
+
       <Experience />
     </Canvas>
   </StrictMode>
