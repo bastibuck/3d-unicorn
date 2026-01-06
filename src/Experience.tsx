@@ -3,6 +3,7 @@ import {
   Float,
   Html,
   MeshReflectorMaterial,
+  Stage,
   Text3D,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
@@ -23,25 +24,34 @@ const Experience: React.FC = () => {
   const torusControls = useControls("torusKnot", {
     position: {
       value: { x: 0, z: 0 },
-      min: -2,
-      max: 2,
-      step: 0.05,
+      min: -5,
+      max: 5,
+      step: 0.2,
     },
-    color: "#ffffff",
     label: "Wohooo",
   });
 
   return (
-    <>
+    <Stage
+      adjustCamera={false}
+      shadows={{
+        type: "contact",
+        opacity: 0.6,
+        blur: 0.6,
+        position: [0, 0.001, 0],
+      }}
+      preset="portrait"
+      environment={{ environmentIntensity: 0.3, preset: "studio" }}
+      castShadow
+    >
       <mesh
-        scale={1}
         position={[torusControls.position.x, 2, torusControls.position.z]}
         ref={torusMeshRef}
         castShadow
         receiveShadow
       >
-        <torusKnotGeometry args={[undefined, undefined, 128, 32]} />
-        <meshStandardMaterial color={torusControls.color} />
+        <torusKnotGeometry args={[undefined, undefined, 256, 32]} />
+        <meshNormalMaterial />
 
         <Html position={[2, 0, 0]} wrapperClass="unicorn-label" center occlude>
           {torusControls.label}
@@ -61,7 +71,7 @@ const Experience: React.FC = () => {
             receiveShadow
           >
             Imma be
-            <meshStandardMaterial />
+            <meshStandardMaterial color={"deeppink"} />
           </Text3D>
         </Center>
       </Float>
@@ -79,7 +89,7 @@ const Experience: React.FC = () => {
             receiveShadow
           >
             a unicorn
-            <meshStandardMaterial />
+            <meshStandardMaterial color={"#ccff44"} />
           </Text3D>
         </Center>
       </Float>
@@ -94,11 +104,12 @@ const Experience: React.FC = () => {
         <MeshReflectorMaterial
           color="#c4c4c4"
           resolution={256}
-          blur={[500, 500]}
-          mixBlur={0.8}
+          blur={[1000, 1000]}
+          mixBlur={0.9}
+          mirror={0.3}
         />
       </mesh>
-    </>
+    </Stage>
   );
 };
 
