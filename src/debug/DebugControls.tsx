@@ -5,11 +5,7 @@ import useDebug from "./useDebug";
 const DebugControls: React.FC = () => {
   const { enabled } = useDebug();
 
-  if (enabled === false) {
-    return null;
-  }
-
-  return <Leva hideCopyButton />;
+  return <Leva hidden={enabled === false} hideCopyButton />;
 };
 
 export default DebugControls;
