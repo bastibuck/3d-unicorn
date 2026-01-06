@@ -39,7 +39,7 @@ const Experience: React.FC = () => {
         </Html>
       </mesh>
 
-      <Float speed={3} floatIntensity={1.5} position={[0, 6, -20]}>
+      <Float speed={2} floatIntensity={2} position={[0, 6.5, -20]}>
         <Center>
           <Text3D
             scale={2}
@@ -52,6 +52,11 @@ const Experience: React.FC = () => {
             Imma be
             <meshNormalMaterial />
           </Text3D>
+        </Center>
+      </Float>
+
+      <Float speed={3} floatIntensity={1.5} position={[0, 4.5, -20]}>
+        <Center>
           <Text3D
             scale={2}
             font={"https://drei.pmnd.rs/fonts/helvetiker_regular.typeface.json"}
@@ -59,7 +64,6 @@ const Experience: React.FC = () => {
             bevelSegments={10}
             bevelSize={0.08}
             letterSpacing={0.1}
-            position={[0, -3, 0]}
           >
             a unicorn
             <meshNormalMaterial />
