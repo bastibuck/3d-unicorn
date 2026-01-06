@@ -29,7 +29,7 @@ const Experience: React.FC = () => {
         <meshStandardMaterial />
 
         <Html position={[2, 0, 0]} wrapperClass="unicorn-label" center occlude>
-          Imma be an unicorn
+          Imma be a unicorn
         </Html>
       </mesh>
 
