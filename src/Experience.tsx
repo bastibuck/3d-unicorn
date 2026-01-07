@@ -55,9 +55,9 @@ const Experience: React.FC = () => {
       adjustCamera={false}
       shadows={{
         type: "contact",
-        opacity: 0.6,
+        opacity: 0.25,
         blur: 0.6,
-        position: [0, 0.001, 0],
+        position: [0, 1.401, 0],
       }}
       preset="portrait"
       environment={{ environmentIntensity: 0.3, preset: "studio" }}
@@ -128,12 +128,7 @@ const Experience: React.FC = () => {
         </Float>
       ))}
 
-      <mesh
-        rotation-x={-Math.PI * 0.5}
-        position={[0, 0, 0]}
-        scale={30}
-        receiveShadow
-      >
+      <mesh rotation-x={-Math.PI * 0.5} scale={30} receiveShadow>
         <planeGeometry />
         <MeshReflectorMaterial
           color="#c4c4c4"

@@ -21,7 +21,7 @@ createRoot(document.getElementById("root")!).render(
         maxPolarAngle={1.6}
         minDistance={4}
         maxDistance={15}
-        target={[0, -3, 0]}
+        target={[0, -2, 0]}
       />
 
       <PerformanceMonitor />
