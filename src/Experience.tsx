@@ -5,14 +5,25 @@ import {
   MeshReflectorMaterial,
   Stage,
   Text3D,
+  useMatcapTexture,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Object3D } from "three";
+
+const donuts = Array.from({ length: 100 }).map(() => ({
+  position: [
+    (Math.random() - 0.5) * 24,
+    (Math.random() - 0.5) * 24,
+    (Math.random() - 0.5) * 24,
+  ] as const,
+  rotation: [Math.random() * Math.PI, Math.random() * Math.PI, 0] as const,
+}));
 
 const Experience: React.FC = () => {
   const torusMeshRef = useRef<Object3D>(null);
+  const [torusMeshGeometryRef, setTorusMeshGeometryRef] = useState();
 
   useFrame((_state, delta) => {
     if (torusMeshRef.current) {
@@ -20,6 +31,14 @@ const Experience: React.FC = () => {
       torusMeshRef.current.rotation.x += delta * 0.5;
     }
   });
+
+  const [matcapTextureTextOne] = useMatcapTexture(
+    "326666_66CBC9_C0B8AE_52B3B4"
+  );
+  const [matcapTextureTextTwo] = useMatcapTexture(
+    "8A3DA1_D77CE4_C263D4_B75AC9"
+  );
+  const [matcapTextureDonut] = useMatcapTexture("7877EE_D87FC5_75D9C7_1C78C0");
 
   const torusControls = useControls("torusKnot", {
     position: {
@@ -44,6 +63,9 @@ const Experience: React.FC = () => {
       environment={{ environmentIntensity: 0.3, preset: "studio" }}
       castShadow
     >
+      {/* setting this once in state to be reused */}
+      <torusGeometry ref={setTorusMeshGeometryRef} />
+
       <mesh
         position={[torusControls.position.x, 2, torusControls.position.z]}
         ref={torusMeshRef}
@@ -61,7 +83,7 @@ const Experience: React.FC = () => {
       <Float speed={2} floatIntensity={2} position={[0, 7, -5]}>
         <Center>
           <Text3D
-            scale={1.5}
+            size={2}
             font={"https://drei.pmnd.rs/fonts/helvetiker_regular.typeface.json"}
             bevelEnabled
             bevelSegments={10}
@@ -71,7 +93,7 @@ const Experience: React.FC = () => {
             receiveShadow
           >
             Imma be
-            <meshStandardMaterial color={"deeppink"} />
+            <meshMatcapMaterial matcap={matcapTextureTextOne} />
           </Text3D>
         </Center>
       </Float>
@@ -79,7 +101,7 @@ const Experience: React.FC = () => {
       <Float speed={3} floatIntensity={1.5} position={[0, 4.5, -5]}>
         <Center>
           <Text3D
-            scale={1.5}
+            size={2}
             font={"https://drei.pmnd.rs/fonts/helvetiker_regular.typeface.json"}
             bevelEnabled
             bevelSegments={10}
@@ -89,10 +111,22 @@ const Experience: React.FC = () => {
             receiveShadow
           >
             a unicorn
-            <meshStandardMaterial color={"#ccff44"} />
+            <meshMatcapMaterial matcap={matcapTextureTextTwo} />
           </Text3D>
         </Center>
       </Float>
+
+      {donuts.map((donut, idx) => (
+        <Float key={idx} floatIntensity={20} rotationIntensity={10} speed={0.4}>
+          <mesh
+            geometry={torusMeshGeometryRef}
+            position={donut.position}
+            rotation={donut.rotation}
+          >
+            <meshMatcapMaterial matcap={matcapTextureDonut} />
+          </mesh>
+        </Float>
+      ))}
 
       <mesh
         rotation-x={-Math.PI * 0.5}
