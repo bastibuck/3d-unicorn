@@ -56,11 +56,13 @@ const Experience: React.FC = () => {
           position={[-2, 0, 2]}
           material={materialRed}
         />
+
         <mesh
           geometry={unicorn.meshes.Cube.geometry}
           position={[-2, 0.405, 2]}
           material={materialBlue}
         />
+
         <mesh
           geometry={unicorn.meshes.Cube.geometry}
           position={[-2, 0.81, 2]}
