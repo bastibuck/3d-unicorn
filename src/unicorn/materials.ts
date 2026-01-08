@@ -2,36 +2,35 @@ import { useControls } from "leva";
 import * as THREE from "three";
 
 const options = {
-  metalness: 0.2,
-  roughness: 0.4,
+  metalness: 0.1,
+  roughness: 0.7,
 };
 
 const colors = {
   white: "#ffffff",
   red: "#f52222",
-  blue: "#4077f7",
+  blueLight: "#31c3eb",
+  blueDark: "#0032fc",
+  orange: "#cb8700",
+  purple: "#500097",
+  pink: "#d082ef",
+  yellow: "#e8c700",
+  grey: "#a7a7a7",
+  turquoiseLight: "#94f2f8",
+  turquoiseDark: "#02aaa3",
 };
 
-const white = new THREE.MeshStandardMaterial({
-  ...options,
-  color: colors.white,
-});
+const BrickMaterial = Object.entries(colors).reduce(
+  (materials, [name, color]) => {
+    materials[name as keyof typeof colors] = new THREE.MeshStandardMaterial({
+      ...options,
+      color,
+    });
 
-const red = new THREE.MeshStandardMaterial({
-  ...options,
-  color: colors.red,
-});
-
-const blue = new THREE.MeshStandardMaterial({
-  ...options,
-  color: colors.blue,
-});
-
-const BrickMaterial = {
-  white,
-  red,
-  blue,
-};
+    return materials;
+  },
+  {} as Record<keyof typeof colors, THREE.MeshStandardMaterial>
+);
 
 const MaterialDebugConfig: React.FC = () => {
   useControls("Brick", {
@@ -57,27 +56,29 @@ const MaterialDebugConfig: React.FC = () => {
         });
       },
     },
-    colorWhite: {
-      value: colors.white,
-      onChange: (colorWhite) => {
-        BrickMaterial.white.color.set(colorWhite);
+
+    ...Object.entries(colors).reduce(
+      (acc, [name, color]) => {
+        acc[`color${name.charAt(0).toUpperCase() + name.slice(1)}`] = {
+          value: color,
+          onChange: (newColor) => {
+            BrickMaterial[name as keyof typeof colors].color.set(newColor);
+          },
+        };
+
+        return acc;
       },
-    },
-    colorRed: {
-      value: colors.red,
-      onChange: (colorRed) => {
-        BrickMaterial.red.color.set(colorRed);
-      },
-    },
-    colorBlue: {
-      value: colors.blue,
-      onChange: (colorBlue) => {
-        BrickMaterial.blue.color.set(colorBlue);
-      },
-    },
+      {} as Record<
+        `color${string}`,
+        {
+          value: string;
+          onChange: (color: string) => void;
+        }
+      >
+    ),
   });
 
   return null;
 };
 
-export { BrickMaterial as materials, MaterialDebugConfig };
+export { BrickMaterial, MaterialDebugConfig };

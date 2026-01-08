@@ -1,6 +1,11 @@
 import React from "react";
-import { MaterialDebugConfig, materials } from "./materials";
+import { MaterialDebugConfig, BrickMaterial } from "./materials";
 import { useGLTF } from "@react-three/drei";
+
+const brickSize = 7.5;
+const brickHeight = 3;
+
+const fullRotation = Math.PI * 2;
 
 const Unicorn: React.FC = () => {
   const unicorn = useGLTF("./lego-tile.glb");
@@ -9,31 +14,80 @@ const Unicorn: React.FC = () => {
     <>
       <MaterialDebugConfig />
 
-      <group dispose={null}>
+      <group name="base" scale={0.2}>
         <mesh
-          geometry={unicorn.meshes.Cube.geometry}
-          position={[-3, 0, 0]}
-          material={materials.red}
-        />
-        <mesh
-          geometry={unicorn.meshes.Cube.geometry}
+          geometry={unicorn.meshes["8x8"].geometry}
           position={[0, 0, 0]}
-          material={materials.white}
+          material={BrickMaterial.white}
+        />
+
+        <mesh
+          geometry={unicorn.meshes["2x6"].geometry}
+          position={[0, brickHeight, 0]}
+          material={BrickMaterial.turquoiseDark}
+        />
+
+        <mesh
+          geometry={unicorn.meshes["2x1"].geometry}
+          position={[brickSize + brickSize / 2, brickHeight, brickSize]}
+          material={BrickMaterial.blueLight}
         />
         <mesh
-          geometry={unicorn.meshes.Cube.geometry}
-          position={[0, 1, 0]}
-          material={materials.red}
+          geometry={unicorn.meshes["2x1"].geometry}
+          position={[brickSize + brickSize / 2, brickHeight, -brickSize]}
+          material={BrickMaterial.orange}
+        />
+
+        <mesh
+          geometry={unicorn.meshes["2x1"].geometry}
+          position={[
+            (brickSize * 1 + brickSize * 0.5) * -1,
+            brickHeight,
+            brickSize * 1,
+          ]}
+          material={BrickMaterial.blueLight}
         />
         <mesh
-          geometry={unicorn.meshes.Cube.geometry}
-          position={[0, 2, 0]}
-          material={materials.blue}
+          geometry={unicorn.meshes["2x1"].geometry}
+          position={[
+            (brickSize * 1 + brickSize * 0.5) * -1,
+            brickHeight,
+            brickSize * -1,
+          ]}
+          material={BrickMaterial.orange}
+        />
+
+        <mesh
+          geometry={unicorn.meshes["2x1"].geometry}
+          position={[0, brickHeight, brickSize / 2 + brickSize * 3]}
+          rotation={[0, fullRotation * 0.25, 0]}
+          material={BrickMaterial.white}
         />
         <mesh
-          geometry={unicorn.meshes.Cube.geometry}
-          position={[3, 0, 0]}
-          material={materials.blue}
+          geometry={unicorn.meshes["2x1"].geometry}
+          position={[0, brickHeight, (brickSize / 2 + brickSize * 3) * -1]}
+          rotation={[0, fullRotation * 0.25, 0]}
+          material={BrickMaterial.white}
+        />
+
+        <mesh
+          geometry={unicorn.meshes["2x1"].geometry}
+          position={[0, brickHeight, (brickSize / 2 + brickSize * 3) * -1]}
+          rotation={[0, fullRotation * 0.25, 0]}
+          material={BrickMaterial.white}
+        />
+
+        <mesh
+          geometry={unicorn.meshes["2x2"].geometry}
+          position={[0, brickHeight * 2, brickSize * 1]}
+          rotation={[0, fullRotation * 0.25, 0]}
+          material={BrickMaterial.blueLight}
+        />
+        <mesh
+          geometry={unicorn.meshes["2x2"].geometry}
+          position={[0, brickHeight * 2, brickSize * -1]}
+          rotation={[0, fullRotation * 0.25, 0]}
+          material={BrickMaterial.orange}
         />
       </group>
     </>

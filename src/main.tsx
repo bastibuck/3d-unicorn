@@ -9,7 +9,7 @@ import DebugControls from "./debug/DebugControls.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Canvas dpr={[1, 2]} camera={{ position: [4, 2, 5] }}>
+    <Canvas dpr={[1, 2]} camera={{ position: [14, 12, 15] }}>
       <Experience />
 
       <OrbitControls
@@ -17,7 +17,7 @@ createRoot(document.getElementById("root")!).render(
         autoRotateSpeed={0.4}
         enablePan={false}
         minPolarAngle={0.35}
-        maxPolarAngle={1.6}
+        maxPolarAngle={1.5}
         minDistance={4}
         maxDistance={15}
       />
