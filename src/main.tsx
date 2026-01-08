@@ -13,6 +13,8 @@ createRoot(document.getElementById("root")!).render(
       <Experience />
 
       <OrbitControls
+        autoRotate
+        autoRotateSpeed={0.4}
         enablePan={false}
         minPolarAngle={0.35}
         maxPolarAngle={1.6}
