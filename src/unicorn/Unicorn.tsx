@@ -16,8 +16,14 @@ const Unicorn: React.FC = () => {
 
       <group name="base" scale={0.2}>
         <mesh
-          geometry={unicorn.meshes["8x8"].geometry}
+          geometry={unicorn.meshes["8x4rounded"].geometry}
           position={[0, 0, 0]}
+          material={BrickMaterial.white}
+        />
+        <mesh
+          geometry={unicorn.meshes["8x4rounded"].geometry}
+          position={[0, 0, 0]}
+          rotation-y={fullRotation * 0.5}
           material={BrickMaterial.white}
         />
 
