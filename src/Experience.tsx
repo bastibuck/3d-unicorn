@@ -12,7 +12,7 @@ import { useControls } from "leva";
 import { useRef, useState } from "react";
 import { Object3D } from "three";
 
-const donuts = Array.from({ length: 100 }).map(() => ({
+const donuts = Array.from({ length: 20 }).map(() => ({
   position: [
     (Math.random() - 0.5) * 24,
     (Math.random() - 0.5) * 24,
