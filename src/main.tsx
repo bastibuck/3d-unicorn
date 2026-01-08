@@ -9,7 +9,7 @@ import DebugControls from "./debug/DebugControls.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Canvas dpr={[1, 2]}>
+    <Canvas dpr={[1, 2]} camera={{ position: [4, 2, 5] }}>
       <Experience />
 
       <OrbitControls
