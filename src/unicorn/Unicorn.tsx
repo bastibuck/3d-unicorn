@@ -1,6 +1,6 @@
 import React from "react";
 import { MaterialDebugConfig, BrickMaterial } from "./materials";
-import { useGLTF } from "@react-three/drei";
+import { Sparkles, useGLTF } from "@react-three/drei";
 
 const brickSize = 7.5;
 const brickHeight = 3;
@@ -95,6 +95,8 @@ const Unicorn: React.FC = () => {
           rotation={[0, fullRotation * 0.25, 0]}
           material={BrickMaterial.orange}
         />
+
+        <Sparkles scale={200} size={20} count={100} />
       </group>
     </>
   );
