@@ -17,13 +17,13 @@ const Unicorn: React.FC = () => {
       <group name="base" scale={0.2}>
         <mesh
           geometry={unicorn.meshes["8x4rounded"].geometry}
-          position={[0, 0, 0]}
+          position={[brickSize * -2, 0, 0]}
+          rotation-y={fullRotation * 0.5}
           material={BrickMaterial.white}
         />
         <mesh
           geometry={unicorn.meshes["8x4rounded"].geometry}
-          position={[0, 0, 0]}
-          rotation-y={fullRotation * 0.5}
+          position={[brickSize * 2, 0, 0]}
           material={BrickMaterial.white}
         />
 
@@ -64,20 +64,13 @@ const Unicorn: React.FC = () => {
         />
 
         <mesh
-          geometry={unicorn.meshes["2x1"].geometry}
+          geometry={unicorn.meshes["2x1flatrounded"].geometry}
           position={[0, brickHeight, brickSize / 2 + brickSize * 3]}
-          rotation={[0, fullRotation * 0.25, 0]}
+          rotation={[0, fullRotation * 0.75, 0]}
           material={BrickMaterial.white}
         />
         <mesh
-          geometry={unicorn.meshes["2x1"].geometry}
-          position={[0, brickHeight, (brickSize / 2 + brickSize * 3) * -1]}
-          rotation={[0, fullRotation * 0.25, 0]}
-          material={BrickMaterial.white}
-        />
-
-        <mesh
-          geometry={unicorn.meshes["2x1"].geometry}
+          geometry={unicorn.meshes["2x1flatrounded"].geometry}
           position={[0, brickHeight, (brickSize / 2 + brickSize * 3) * -1]}
           rotation={[0, fullRotation * 0.25, 0]}
           material={BrickMaterial.white}
@@ -101,3 +94,5 @@ const Unicorn: React.FC = () => {
 };
 
 export default Unicorn;
+
+useGLTF.preload("./lego-tile.glb");
