@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { MaterialDebugConfig, BrickMaterial } from "./materials";
 import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { Group, Mesh } from "three";
 
 const brickSize = 7.5;
 const brickHeight = 3;
@@ -10,6 +13,10 @@ const fullRotation = Math.PI * 2;
 
 const Unicorn: React.FC = () => {
   const unicorn = useGLTF("./lego-tile.glb");
+
+  const unicornRef = useRef<Group>(null);
+  const animatedMeshesRef = useRef<Mesh[]>([]);
+  const animationTimeline = useRef<gsap.core.Timeline | null>(null);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const locator = useControls("brick-location", {
@@ -33,17 +40,56 @@ const Unicorn: React.FC = () => {
     },
   });
 
+  const { contextSafe } = useGSAP(
+    () => {
+      if (unicornRef.current) {
+        animatedMeshesRef.current = [];
+
+        unicornRef.current.traverse((child) => {
+          if (child instanceof Mesh) {
+            animatedMeshesRef.current.push(child);
+          }
+        });
+      }
+
+      animationTimeline.current = gsap.timeline({ reversed: true }).to(
+        animatedMeshesRef.current.map((d) => d.position),
+        {
+          y: "random(0, 100)",
+          x: "random(0, 100)",
+          z: "random(0, 100)",
+
+          ease: "back.out",
+          duration: 0.6,
+          stagger: {
+            amount: 0.5,
+            from: "random",
+            ease: "power2",
+          },
+        }
+      );
+    },
+    { scope: unicornRef }
+  );
+
   return (
     <>
       <MaterialDebugConfig />
 
-      <group name="unicorn" scale={0.2}>
-        <group name="base" visible={true} position={[0, 0, 0]}>
+      <group name="unicorn" scale={0.2} ref={unicornRef}>
+        <group name="base" visible={true}>
           <mesh
             geometry={unicorn.meshes["8x4rounded"].geometry}
             position={[brickSize * -2, 0, 0]}
             rotation-y={fullRotation * 0.5}
-            material={BrickMaterial.white}
+            material={BrickMaterial.red}
+            onClick={() =>
+              contextSafe(() => {
+                animationTimeline.current?.reversed(
+                  !animationTimeline.current.reversed()
+                );
+              })()
+            }
           />
           <mesh
             geometry={unicorn.meshes["8x4rounded"].geometry}
