@@ -91,7 +91,15 @@ const Unicorn: React.FC = () => {
   );
 
   return (
-    <>
+    <group
+      onClick={() =>
+        contextSafe(() => {
+          animationTimeline.current?.reversed(
+            !animationTimeline.current.reversed()
+          );
+        })()
+      }
+    >
       <MaterialDebugConfig />
 
       <group name="unicorn" scale={0.2} ref={unicornRef}>
@@ -100,14 +108,7 @@ const Unicorn: React.FC = () => {
             geometry={unicorn.meshes["8x4rounded"].geometry}
             position={[brickSize * -2, 0, 0]}
             rotation-y={fullRotation * 0.5}
-            material={BrickMaterial.red}
-            onClick={() =>
-              contextSafe(() => {
-                animationTimeline.current?.reversed(
-                  !animationTimeline.current.reversed()
-                );
-              })()
-            }
+            material={BrickMaterial.white}
           />
           <mesh
             geometry={unicorn.meshes["8x4rounded"].geometry}
@@ -352,7 +353,7 @@ const Unicorn: React.FC = () => {
           /> */}
         </group>
       </group>
-    </>
+    </group>
   );
 };
 
