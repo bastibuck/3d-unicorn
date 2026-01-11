@@ -58,7 +58,7 @@ const Unicorn: React.FC = () => {
           animatedMeshesRef.current.map((d) => d.position),
           {
             x: "random(-100, 100)",
-            y: "random(0, 100)",
+            y: "random(10, 110)",
             z: "random(-100, 100)",
 
             ease: "back.out",
