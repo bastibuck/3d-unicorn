@@ -52,22 +52,40 @@ const Unicorn: React.FC = () => {
         });
       }
 
-      animationTimeline.current = gsap.timeline({ reversed: true }).to(
-        animatedMeshesRef.current.map((d) => d.position),
-        {
-          x: "random(-100, 100)",
-          y: "random(0, 100)",
-          z: "random(-100, 100)",
+      animationTimeline.current = gsap
+        .timeline({ reversed: true })
+        .to(
+          animatedMeshesRef.current.map((d) => d.position),
+          {
+            x: "random(-100, 100)",
+            y: "random(0, 100)",
+            z: "random(-100, 100)",
 
-          ease: "back.out",
-          duration: 0.6,
-          stagger: {
-            amount: 0.5,
-            from: "random",
-            ease: "power2",
+            ease: "back.out",
+            duration: 0.6,
+            stagger: {
+              amount: 0.5,
+              from: "random",
+            },
           },
-        }
-      );
+          0
+        )
+        .to(
+          animatedMeshesRef.current.map((d) => d.rotation),
+          {
+            x: () => gsap.utils.random(-Math.PI, Math.PI),
+            y: () => gsap.utils.random(-Math.PI, Math.PI),
+            z: () => gsap.utils.random(-Math.PI, Math.PI),
+
+            ease: "back.out",
+            duration: 0.6,
+            stagger: {
+              amount: 0.5,
+              from: "random",
+            },
+          },
+          0
+        );
     },
     { scope: unicornRef }
   );
