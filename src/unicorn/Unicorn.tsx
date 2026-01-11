@@ -55,9 +55,9 @@ const Unicorn: React.FC = () => {
       animationTimeline.current = gsap.timeline({ reversed: true }).to(
         animatedMeshesRef.current.map((d) => d.position),
         {
+          x: "random(-100, 100)",
           y: "random(0, 100)",
-          x: "random(0, 100)",
-          z: "random(0, 100)",
+          z: "random(-100, 100)",
 
           ease: "back.out",
           duration: 0.6,
