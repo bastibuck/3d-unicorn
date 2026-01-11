@@ -65,7 +65,7 @@ const Unicorn: React.FC = () => {
             duration: 0.6,
             stagger: {
               amount: 0.5,
-              from: "random",
+              from: "random", // TODO? maybe remove this in favor of having the correct order of building and unbuilding the unicorn?
             },
           },
           0
@@ -77,11 +77,11 @@ const Unicorn: React.FC = () => {
             y: () => gsap.utils.random(-Math.PI, Math.PI),
             z: () => gsap.utils.random(-Math.PI, Math.PI),
 
-            ease: "back.out",
+            ease: "none",
             duration: 0.6,
             stagger: {
               amount: 0.5,
-              from: "random",
+              from: "random", // TODO? maybe remove this in favor of having the correct order of building and unbuilding the unicorn?
             },
           },
           0
