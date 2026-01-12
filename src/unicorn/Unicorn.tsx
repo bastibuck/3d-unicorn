@@ -92,13 +92,15 @@ const Unicorn: React.FC = () => {
 
   return (
     <group
-      onClick={() =>
+      onClick={(event) => {
+        event.stopPropagation();
+
         contextSafe(() => {
           animationTimeline.current?.reversed(
             !animationTimeline.current.reversed()
           );
-        })()
-      }
+        })();
+      }}
     >
       <MaterialDebugConfig />
 
