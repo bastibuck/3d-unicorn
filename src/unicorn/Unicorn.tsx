@@ -29,7 +29,7 @@ const Unicorn: React.FC = () => {
     y: {
       value: 0,
       step: brickHeight,
-      min: 0,
+      min: -brickHeight * 10,
       max: brickHeight * 10,
     },
     z: {
@@ -37,6 +37,28 @@ const Unicorn: React.FC = () => {
       step: brickSize / 2,
       min: -brickSize * 10,
       max: brickSize * 10,
+    },
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const rotator = useControls("brick-rotation", {
+    x: {
+      value: 0,
+      step: fullRotation * 0.125,
+      min: fullRotation * -1,
+      max: fullRotation * 1,
+    },
+    y: {
+      value: 0,
+      step: fullRotation * 0.125,
+      min: fullRotation * -1,
+      max: fullRotation * 1,
+    },
+    z: {
+      value: 0,
+      step: fullRotation * 0.125,
+      min: fullRotation * -1,
+      max: fullRotation * 1,
     },
   });
 
@@ -265,6 +287,7 @@ const Unicorn: React.FC = () => {
 
         <group
           name="tail"
+          visible={true}
           rotation-y={fullRotation * 0.25}
           position={[brickSize * -2, brickHeight * 21, 0]}
         >
@@ -378,6 +401,128 @@ const Unicorn: React.FC = () => {
             position={[0, brickHeight * 3, brickSize * 2]}
             rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0]}
             material={BrickMaterial.turquoiseDark}
+          />
+        </group>
+
+        <group name="feet" visible={true} position={[0, brickHeight * 3, 0]}>
+          <mesh
+            geometry={unicorn.meshes["2x2jointtarget"].geometry}
+            position={[0, 0, brickSize * 1]}
+            rotation={[fullRotation * 0, fullRotation * 0.5, fullRotation * 0]}
+            material={BrickMaterial.grey}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1flatrounded"].geometry}
+            position={[brickSize * 0.5, brickHeight * 1, brickSize * -1]}
+            rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.grey}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x2jointtarget"].geometry}
+            position={[0, 0, brickSize * -1]}
+            rotation={[fullRotation * 0, fullRotation * 0.5, fullRotation * 0]}
+            material={BrickMaterial.grey}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1flatrounded"].geometry}
+            position={[brickSize * 0.5, brickHeight * 1, brickSize * 1]}
+            rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.grey}
+          />
+        </group>
+
+        <group
+          name="legs"
+          visible={true}
+          position={[brickSize * -1.25, brickHeight * 4, 0]}
+          rotation={[0, 0, fullRotation * -0.25]}
+        >
+          <mesh
+            geometry={unicorn.meshes["3x1joint"].geometry}
+            position={[brickSize * -2, brickHeight * 1, brickSize * -1]}
+            rotation={[fullRotation * 0, fullRotation * 0.25, fullRotation * 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["3x1joint"].geometry}
+            position={[brickSize * -2, brickHeight * 1, brickSize * 1]}
+            rotation={[fullRotation * 0, fullRotation * 0.25, fullRotation * 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["4x1"].geometry}
+            position={[brickSize * -3, brickHeight * 0, brickSize * -1]}
+            rotation={[fullRotation * 0, fullRotation * 0.25, fullRotation * 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["4x1"].geometry}
+            position={[brickSize * -3, brickHeight * 0, brickSize * 1]}
+            rotation={[fullRotation * 0, fullRotation * 0.25, fullRotation * 0]}
+            material={BrickMaterial.white}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["3x1"].geometry}
+            position={[brickSize * -4.5, brickHeight * 1, brickSize * -1]}
+            rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.turquoiseLight}
+          />
+          <mesh
+            geometry={unicorn.meshes["3x1"].geometry}
+            position={[brickSize * -4.5, brickHeight * 1, brickSize * 1]}
+            rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.turquoiseLight}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["3x1flatsloped^3"].geometry}
+            position={[brickSize * -3.5, brickHeight * 2, brickSize * -1]}
+            rotation={[0, fullRotation * 0.5, 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["3x1flatsloped^3"].geometry}
+            position={[brickSize * -3.5, brickHeight * 2, brickSize * 1]}
+            rotation={[0, fullRotation * 0.5, 0]}
+            material={BrickMaterial.white}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x1flatsloped^2inverted"].geometry}
+            position={[brickSize * -5, brickHeight * 1, brickSize * -1]}
+            rotation={[fullRotation * 0.5, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.turquoiseLight}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1flatsloped^2inverted"].geometry}
+            position={[brickSize * -5, brickHeight * 1, brickSize * 1]}
+            rotation={[fullRotation * 0.5, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.turquoiseLight}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1rounded"].geometry}
+            position={[brickSize * -3.5, brickHeight * -1, brickSize * -1]}
+            rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1rounded"].geometry}
+            position={[brickSize * -3.5, brickHeight * -1, brickSize * 1]}
+            rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1jointtarget"].geometry}
+            position={[brickSize * -5, brickHeight * 2, brickSize * 1]}
+            rotation={[fullRotation * 0, fullRotation * 0.5, fullRotation * 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1jointtarget"].geometry}
+            position={[brickSize * -5, brickHeight * 2, brickSize * -1]}
+            rotation={[fullRotation * 0, fullRotation * 0.5, fullRotation * 0]}
+            material={BrickMaterial.white}
           />
 
           {/* <mesh
