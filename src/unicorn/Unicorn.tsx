@@ -348,6 +348,20 @@ const Unicorn: React.FC = () => {
           />
 
           <mesh
+            geometry={unicorn.meshes["3x1joint"].geometry}
+            position={[0, brickHeight * 1, brickSize * 1]}
+            rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.blueDark}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x1step^3"].geometry}
+            position={[0, brickHeight * 1, brickSize * -2]}
+            rotation={[fullRotation * 0, fullRotation * 0.5, fullRotation * 0]}
+            material={BrickMaterial.purple}
+          />
+
+          <mesh
             geometry={unicorn.meshes["2x1slantedconnector"].geometry}
             position={[0, brickHeight * 6, brickSize * -2]}
             rotation={[fullRotation * 0, fullRotation * 0.5, fullRotation * 0]}
@@ -359,6 +373,13 @@ const Unicorn: React.FC = () => {
             rotation={[fullRotation * 0, fullRotation * 0.25, fullRotation * 0]}
             material={BrickMaterial.turquoiseDark}
           />
+          <mesh
+            geometry={unicorn.meshes["2x1arcspringboard"].geometry}
+            position={[0, brickHeight * 3, brickSize * 2]}
+            rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0]}
+            material={BrickMaterial.turquoiseDark}
+          />
+
           {/* <mesh
             geometry={unicorn.meshes["1x1"].geometry}
             position={[locator.x, locator.y, locator.z]}
