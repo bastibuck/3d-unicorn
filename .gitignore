@@ -23,6 +23,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+TODO
 
 # 3D stuff
 *.blend1
