@@ -29,7 +29,7 @@ const Experience: React.FC = () => {
         minPolarAngle={0.35}
         maxPolarAngle={1.5}
         minDistance={12}
-        maxDistance={45}
+        maxDistance={55}
       />
     </>
   );
