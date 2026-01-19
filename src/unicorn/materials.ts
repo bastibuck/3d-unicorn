@@ -33,50 +33,56 @@ const BrickMaterial = Object.entries(colors).reduce(
 );
 
 const MaterialDebugConfig: React.FC = () => {
-  useControls("Brick", {
-    metalness: {
-      value: options.metalness,
-      min: 0,
-      max: 1,
-      step: 0.01,
-      onChange: (metalness) => {
-        Object.values(BrickMaterial).forEach((material) => {
-          material.metalness = metalness;
-        });
+  useControls(
+    "Materials",
+    {
+      metalness: {
+        value: options.metalness,
+        min: 0,
+        max: 1,
+        step: 0.01,
+        onChange: (metalness) => {
+          Object.values(BrickMaterial).forEach((material) => {
+            material.metalness = metalness;
+          });
+        },
       },
-    },
-    roughness: {
-      value: options.roughness,
-      min: 0,
-      max: 1,
-      step: 0.01,
-      onChange: (roughness) => {
-        Object.values(BrickMaterial).forEach((material) => {
-          material.roughness = roughness;
-        });
+      roughness: {
+        value: options.roughness,
+        min: 0,
+        max: 1,
+        step: 0.01,
+        onChange: (roughness) => {
+          Object.values(BrickMaterial).forEach((material) => {
+            material.roughness = roughness;
+          });
+        },
       },
-    },
 
-    ...Object.entries(colors).reduce(
-      (acc, [name, color]) => {
-        acc[`color${name.charAt(0).toUpperCase() + name.slice(1)}`] = {
-          value: color,
-          onChange: (newColor) => {
-            BrickMaterial[name as keyof typeof colors].color.set(newColor);
-          },
-        };
+      ...Object.entries(colors).reduce(
+        (acc, [name, color]) => {
+          acc[`color${name.charAt(0).toUpperCase() + name.slice(1)}`] = {
+            value: color,
+            onChange: (newColor) => {
+              BrickMaterial[name as keyof typeof colors].color.set(newColor);
+            },
+          };
 
-        return acc;
-      },
-      {} as Record<
-        `color${string}`,
-        {
-          value: string;
-          onChange: (color: string) => void;
-        }
-      >
-    ),
-  });
+          return acc;
+        },
+        {} as Record<
+          `color${string}`,
+          {
+            value: string;
+            onChange: (color: string) => void;
+          }
+        >
+      ),
+    },
+    {
+      collapsed: true,
+    }
+  );
 
   return null;
 };

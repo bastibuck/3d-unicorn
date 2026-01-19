@@ -23,20 +23,20 @@ const Unicorn: React.FC = () => {
     x: {
       value: 0,
       step: brickSize / 2,
-      min: -brickSize * 10,
-      max: brickSize * 10,
+      min: -brickSize * 15,
+      max: brickSize * 15,
     },
     y: {
       value: 0,
       step: brickHeight,
-      min: -brickHeight * 10,
-      max: brickHeight * 10,
+      min: -brickHeight * 15,
+      max: brickHeight * 15,
     },
     z: {
       value: 0,
       step: brickSize / 2,
-      min: -brickSize * 10,
-      max: brickSize * 10,
+      min: -brickSize * 15,
+      max: brickSize * 15,
     },
   });
 
@@ -404,7 +404,11 @@ const Unicorn: React.FC = () => {
           />
         </group>
 
-        <group name="feet" visible={true} position={[0, brickHeight * 3, 0]}>
+        <group
+          name="back-feet"
+          visible={true}
+          position={[0, brickHeight * 3, 0]}
+        >
           <mesh
             geometry={unicorn.meshes["2x2jointtarget"].geometry}
             position={[0, 0, brickSize * 1]}
@@ -432,7 +436,7 @@ const Unicorn: React.FC = () => {
         </group>
 
         <group
-          name="legs"
+          name="back-legs"
           visible={true}
           position={[brickSize * -1.25, brickHeight * 4, 0]}
           rotation={[0, 0, fullRotation * -0.25]}
@@ -524,11 +528,121 @@ const Unicorn: React.FC = () => {
             rotation={[fullRotation * 0, fullRotation * 0.5, fullRotation * 0]}
             material={BrickMaterial.white}
           />
+        </group>
+
+        <group
+          name="front-legs"
+          visible={true}
+          position={[brickSize * 6, brickHeight * 3, 0]}
+          rotation={[0, 0, 0]}
+        >
+          <group
+            name="legs"
+            position={[brickSize * -1.25, brickHeight * 1, 0]}
+            rotation={[0, 0, fullRotation * -0.25]}
+          >
+            <mesh
+              geometry={unicorn.meshes["3x1joint"].geometry}
+              position={[brickSize * -2, brickHeight * 1, brickSize * 1]}
+              rotation={[0, fullRotation * 0.25, 0]}
+              material={BrickMaterial.white}
+            />
+            <mesh
+              geometry={unicorn.meshes["3x1joint"].geometry}
+              position={[brickSize * -2, brickHeight * 1, brickSize * -1]}
+              rotation={[0, fullRotation * 0.25, 0]}
+              material={BrickMaterial.white}
+            />
+
+            <mesh
+              geometry={unicorn.meshes["2x1flatsloped^2"].geometry}
+              position={[brickSize * -2, brickHeight * 2, brickSize * 1]}
+              rotation={[0, fullRotation * 0.5, 0]}
+              material={BrickMaterial.white}
+            />
+            <mesh
+              geometry={unicorn.meshes["2x1flatsloped^2"].geometry}
+              position={[brickSize * -2, brickHeight * 2, brickSize * -1]}
+              rotation={[0, fullRotation * 0.5, 0]}
+              material={BrickMaterial.white}
+            />
+
+            <mesh
+              geometry={unicorn.meshes["2x1grabber"].geometry}
+              position={[brickSize * -2.5, brickHeight * 2, brickSize * 1]}
+              rotation={[0, fullRotation * -0.25, 0]}
+              material={BrickMaterial.white}
+            />
+
+            <mesh
+              geometry={unicorn.meshes["2x1grabber"].geometry}
+              position={[brickSize * -2.5, brickHeight * 2, brickSize * -1]}
+              rotation={[0, fullRotation * -0.25, 0]}
+              material={BrickMaterial.white}
+            />
+
+            <mesh
+              geometry={unicorn.meshes["3x1jointdouble"].geometry}
+              position={[brickSize * -4.7, brickHeight * 2, brickSize * 1]}
+              rotation={[0, fullRotation * 0.25, 0]}
+              material={BrickMaterial.white}
+            />
+            <mesh
+              geometry={unicorn.meshes["3x1jointdouble"].geometry}
+              position={[brickSize * -4.7, brickHeight * 2, brickSize * -1]}
+              rotation={[0, fullRotation * 0.25, 0]}
+              material={BrickMaterial.white}
+            />
+
+            <mesh
+              geometry={unicorn.meshes["1x1flatroundedhalf"].geometry}
+              position={[brickSize * -4.7, brickHeight * 3, brickSize * 1]}
+              rotation={[0, fullRotation * 0.25, 0]}
+              material={BrickMaterial.white}
+            />
+            <mesh
+              geometry={unicorn.meshes["1x1flatroundedhalf"].geometry}
+              position={[brickSize * -4.7, brickHeight * 3, brickSize * -1]}
+              rotation={[0, fullRotation * 0.25, 0]}
+              material={BrickMaterial.white}
+            />
+          </group>
+
+          <group name="front-feet" position={[0, 0, 0]}>
+            <mesh
+              geometry={unicorn.meshes["2x2jointtarget"].geometry}
+              position={[0, 0, brickSize * 1]}
+              rotation={[
+                fullRotation * 0,
+                fullRotation * 0.5,
+                fullRotation * 0,
+              ]}
+              material={BrickMaterial.grey}
+            />
+            <mesh
+              geometry={unicorn.meshes["2x1flatrounded"].geometry}
+              position={[brickSize * 0.5, brickHeight * 1, brickSize * -1]}
+              rotation={[0, 0, 0]}
+              material={BrickMaterial.grey}
+            />
+            <mesh
+              geometry={unicorn.meshes["2x2jointtarget"].geometry}
+              position={[0, 0, brickSize * -1]}
+              rotation={[0, fullRotation * 0.5, 0]}
+              material={BrickMaterial.grey}
+            />
+            <mesh
+              geometry={unicorn.meshes["2x1flatrounded"].geometry}
+              position={[brickSize * 0.5, brickHeight * 1, brickSize * 1]}
+              rotation={[0, 0, 0]}
+              material={BrickMaterial.grey}
+            />
+          </group>
 
           {/* <mesh
             geometry={unicorn.meshes["1x1"].geometry}
             position={[locator.x, locator.y, locator.z]}
-            rotation={[fullRotation * 0, fullRotation * 0, fullRotation * 0.]}
+            rotation={[rotator.x, rotator.y, rotator.z]}
             material={BrickMaterial.red}
           /> */}
         </group>
