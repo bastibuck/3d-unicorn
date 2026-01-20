@@ -543,7 +543,7 @@ const Unicorn: React.FC = () => {
         <group
           name="front-legs"
           visible={visibility.frontLegs}
-          position={[brickSize * 8, brickHeight * 3.5, 0]}
+          position={[brickSize * 7.92, brickHeight * 3.33, 0]}
         >
           <group
             name="legs"
