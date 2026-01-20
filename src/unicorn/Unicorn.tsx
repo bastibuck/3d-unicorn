@@ -8,6 +8,7 @@ import { Group, Mesh } from "three";
 
 const brickSize = 7.5;
 const brickHeight = 3;
+const fullRotation = Math.PI * 2;
 
 const visible = {
   base: true,
@@ -15,9 +16,8 @@ const visible = {
   backLegs: true,
   frontLegs: true,
   tail: true,
+  head: true,
 };
-
-const fullRotation = Math.PI * 2;
 
 const Unicorn: React.FC = () => {
   const unicorn = useGLTF("./lego-tile.glb");
@@ -33,20 +33,20 @@ const Unicorn: React.FC = () => {
     x: {
       value: 0,
       step: brickSize / 2,
-      min: -brickSize * 15,
-      max: brickSize * 15,
+      min: -brickSize * 30,
+      max: brickSize * 30,
     },
     y: {
       value: 0,
       step: brickHeight,
-      min: -brickHeight * 15,
-      max: brickHeight * 15,
+      min: -brickHeight * 30,
+      max: brickHeight * 30,
     },
     z: {
       value: 0,
       step: brickSize / 2,
-      min: -brickSize * 15,
-      max: brickSize * 15,
+      min: -brickSize * 30,
+      max: brickSize * 30,
     },
   });
 
@@ -655,19 +655,16 @@ const Unicorn: React.FC = () => {
           position={[brickSize * 4.2, brickHeight * 14, 0]}
           rotation={[0, fullRotation * 0.25, 0]}
         >
-          {/* <mesh
-            geometry={unicorn.meshes["1x1"].geometry}
-            position={[locator.x, locator.y, locator.z]}
-            rotation={[rotator.x, rotator.y, rotator.z]}
-            material={BrickMaterial.red}
-          /> */}
+          <mesh
+            geometry={unicorn.meshes["4x2^3updownupstep"].geometry}
+            position={[0, 0, brickSize * 2]}
+            material={BrickMaterial.white}
+          />
 
-          {/* <mesh
-            geometry={unicorn.meshes["1x1"].geometry}
-            position={[locator.x, locator.y, locator.z]}
-            rotation={[rotator.x, rotator.y, rotator.z]}
-            material={BrickMaterial.red}
-          /> */}
+          <mesh
+            geometry={unicorn.meshes["4x4slantednosecone"].geometry}
+            material={BrickMaterial.white}
+          />
 
           <mesh
             geometry={unicorn.meshes["2x2"].geometry}
@@ -704,12 +701,17 @@ const Unicorn: React.FC = () => {
             material={BrickMaterial.white}
           />
 
-          {/* <mesh
-            geometry={unicorn.meshes["2x1"].geometry} // TODO! slanted 2x1 connector bit x2
-            position={[locator.x, locator.y, locator.z]}
-            rotation={[rotator.x, rotator.y, rotator.z]}
-            material={BrickMaterial.red}
-          /> */}
+          <mesh
+            geometry={unicorn.meshes["2x1^3slantedstep"].geometry}
+            position={[brickSize * 1, brickHeight * 5, brickSize * 2.5]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1^3slantedstep"].geometry}
+            position={[brickSize * -1, brickHeight * 5, brickSize * 2.5]}
+            rotation={[0, fullRotation * -0.5, 0]}
+            material={BrickMaterial.white}
+          />
 
           <mesh
             geometry={unicorn.meshes["2x1"].geometry}
@@ -718,12 +720,12 @@ const Unicorn: React.FC = () => {
             material={BrickMaterial.turquoiseLight}
           />
 
-          {/* <mesh
-            geometry={unicorn.meshes["2x1"].geometry} // TODO! up-side-down slope 2x1^3
-            position={[locator.x, locator.y, locator.z]}
-            rotation={[rotator.x, rotator.y, rotator.z]}
-            material={BrickMaterial.red}
-          /> */}
+          <mesh
+            geometry={unicorn.meshes["2x2^3slopedstep"].geometry}
+            position={[0, brickHeight * 6, brickSize * 3]}
+            rotation={[0, fullRotation * 0.5, 0]}
+            material={BrickMaterial.white}
+          />
 
           <mesh
             geometry={unicorn.meshes["2x1"].geometry}
@@ -754,33 +756,30 @@ const Unicorn: React.FC = () => {
             material={BrickMaterial.white}
           />
 
-          {/* <mesh
-            geometry={unicorn.meshes["1x1"].geometry}
-            position={[locator.x, locator.y, locator.z]}
-            rotation={[rotator.x, rotator.y, rotator.z]}
-            material={BrickMaterial.red}
-          /> */}
+          <mesh
+            geometry={unicorn.meshes["4x1bridge"].geometry}
+            position={[brickSize * 0.5, brickHeight * 5, 0]}
+            material={BrickMaterial.yellow}
+          />
 
-          {/* <mesh
-            geometry={unicorn.meshes["1x1"].geometry}
-            position={[locator.x, locator.y, locator.z]}
-            rotation={[rotator.x, rotator.y, rotator.z]}
-            material={BrickMaterial.red}
-          /> */}
+          <mesh
+            geometry={unicorn.meshes["4x1bridge"].geometry}
+            position={[brickSize * -0.5, brickHeight * 5, 0]}
+            material={BrickMaterial.yellow}
+          />
 
-          {/* <mesh
-            geometry={unicorn.meshes["1x1"].geometry}
-            position={[locator.x, locator.y, locator.z]}
-            rotation={[rotator.x, rotator.y, rotator.z]}
-            material={BrickMaterial.red}
-          /> */}
-
-          {/* <mesh
-            geometry={unicorn.meshes["1x1"].geometry}
-            position={[locator.x, locator.y, locator.z]}
-            rotation={[rotator.x, rotator.y, rotator.z]}
-            material={BrickMaterial.red}
-          /> */}
+          <mesh
+            geometry={unicorn.meshes["2x4arcspringboard"].geometry}
+            position={[brickSize * 1, brickHeight * 6, 0]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x4arcspringboard"].geometry}
+            position={[brickSize * -1, brickHeight * 6, 0]}
+            rotation={[0, fullRotation * -0.25, 0]}
+            material={BrickMaterial.white}
+          />
 
           <mesh
             geometry={unicorn.meshes["2x1joint"].geometry}
@@ -825,6 +824,24 @@ const Unicorn: React.FC = () => {
             geometry={unicorn.meshes["4x2"].geometry}
             position={[0, brickHeight * 9, brickSize * -1]}
             material={BrickMaterial.turquoiseLight}
+          />
+        </group>
+
+        <group
+          name="head"
+          visible={visibility.head}
+          position={[brickSize * 5.7, brickHeight * 23, 0]}
+        >
+          <mesh
+            geometry={unicorn.meshes["2x1"].geometry}
+            material={BrickMaterial.orange}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x1^3sloped"].geometry}
+            position={[0, brickHeight * 1, 0]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.orange}
           />
 
           {/* <mesh
