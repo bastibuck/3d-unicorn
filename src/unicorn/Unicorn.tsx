@@ -830,7 +830,7 @@ const Unicorn: React.FC = () => {
         <group
           name="head"
           visible={visibility.head}
-          position={[brickSize * 5.7, brickHeight * 23, 0]}
+          position={[brickSize * 4.7, brickHeight * 24, 0]}
         >
           <mesh
             geometry={unicorn.meshes["2x1"].geometry}
@@ -844,12 +844,268 @@ const Unicorn: React.FC = () => {
             material={BrickMaterial.orange}
           />
 
+          <mesh
+            geometry={unicorn.meshes["1x1^3sideconnector"].geometry}
+            position={[brickSize * 1, 0, brickSize * 0.5]}
+            rotation={[0, fullRotation * -0.25, 0]}
+            material={BrickMaterial.orange}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1^3sideconnector"].geometry}
+            position={[brickSize * 1, 0, brickSize * -0.5]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.orange}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["1x1flatrounded"].geometry}
+            position={[brickSize * 1, brickHeight * 1.75, brickSize * 1]}
+            rotation={[fullRotation * 0.25, 0, 0]}
+            material={BrickMaterial.yellow}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1flatrounded"].geometry}
+            position={[brickSize * 1, brickHeight * 1.75, brickSize * -1]}
+            rotation={[fullRotation * -0.25, fullRotation * 0.25, 0]}
+            material={BrickMaterial.yellow}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x1slantedconnector"].geometry}
+            position={[brickSize * 1.5, brickHeight * 3, brickSize * 0.5]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.orange}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1slantedconnector"].geometry}
+            position={[brickSize * 1.5, brickHeight * 3, brickSize * -0.5]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.orange}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["1x1^3sideconnector"].geometry}
+            position={[brickSize * 2, 0, brickSize * 0.5]}
+            rotation={[0, fullRotation * -0.25, 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1^3sideconnector"].geometry}
+            position={[brickSize * 2, 0, brickSize * -0.5]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.white}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x1"].geometry}
+            position={[brickSize * 3, 0, 0]}
+            material={BrickMaterial.turquoiseLight}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1^3"].geometry}
+            position={[brickSize * 3, brickHeight * 1, 0]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.white}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x2flatrounded"].geometry}
+            position={[brickSize * 2.5, brickHeight * 3, brickSize * -1]}
+            rotation={[fullRotation * -0.25, fullRotation * -0.25, 0]}
+            material={BrickMaterial.yellow}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x2flatrounded"].geometry}
+            position={[brickSize * 2.5, brickHeight * 3, brickSize * 1]}
+            rotation={[fullRotation * 0.25, fullRotation * 0.5, 0]}
+            material={BrickMaterial.yellow}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["3x2step3x3"].geometry}
+            position={[brickSize * 2, brickHeight * -1, 0]}
+            material={BrickMaterial.white}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x1"].geometry}
+            position={[brickSize * 3, brickHeight * 4, 0]}
+            material={BrickMaterial.turquoiseLight}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1^3sideconnector"].geometry}
+            position={[brickSize * 3, brickHeight * 5, brickSize * 0.5]}
+            rotation={[0, fullRotation * -0.25, 0]}
+            material={BrickMaterial.red}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1^3sideconnector"].geometry}
+            position={[brickSize * 3, brickHeight * 5, brickSize * -0.5]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.red}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1flatrounded"].geometry}
+            position={[brickSize * 3, brickHeight * 6.75, brickSize * 1]}
+            rotation={[fullRotation * 0.25, 0, 0]}
+            material={BrickMaterial.yellow}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1flatrounded"].geometry}
+            position={[brickSize * 3, brickHeight * 6.75, brickSize * -1]}
+            rotation={[fullRotation * -0.25, fullRotation * 0.25, 0]}
+            material={BrickMaterial.yellow}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x1"].geometry}
+            position={[brickSize * 2, brickHeight * 6, 0]}
+            material={BrickMaterial.red}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1"].geometry}
+            position={[brickSize * 3, brickHeight * 8, 0]}
+            material={BrickMaterial.red}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1arcspringboard"].geometry}
+            position={[brickSize * 2.5, brickHeight * 7, brickSize * 0.5]}
+            rotation={[0, fullRotation * -0.25, 0]}
+            material={BrickMaterial.red}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1arcspringboard"].geometry}
+            position={[brickSize * 2.5, brickHeight * 7, brickSize * -0.5]}
+            rotation={[0, fullRotation * -0.25, 0]}
+            material={BrickMaterial.red}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["3x2^3"].geometry}
+            position={[brickSize * 5, brickHeight * 6, 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1down2x2connectorplane"].geometry}
+            position={[brickSize * 6, brickHeight * 9, 0]}
+            material={BrickMaterial.white}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x2"].geometry}
+            position={[brickSize * 4.5, brickHeight * 9, 0]}
+            material={BrickMaterial.turquoiseDark}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1down2x2connectorplane"].geometry}
+            position={[brickSize * 4.5, brickHeight * 11, brickSize * 0.5]}
+            rotation={[0, fullRotation * -0.25, 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1down2x2connectorplane"].geometry}
+            position={[brickSize * 4.5, brickHeight * 11, brickSize * -0.5]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.white}
+          />
+
+          {/* ear connectors */}
           {/* <mesh
-            geometry={unicorn.meshes["1x1"].geometry}
-            position={[locator.x, locator.y, locator.z]}
-            rotation={[rotator.x, rotator.y, rotator.z]}
+            geometry={unicorn.meshes["2x1"].geometry}
+            position={[brickSize * 3.5, brickHeight * 10, brickSize * 0.5]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.red}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1"].geometry}
+            position={[brickSize * 3.5, brickHeight * 10, brickSize * -0.5]}
+            rotation={[0, fullRotation * 0.25, 0]}
             material={BrickMaterial.red}
           /> */}
+
+          <mesh
+            geometry={unicorn.meshes["2x1"].geometry}
+            position={[brickSize * 5, brickHeight * 10, 0]}
+            material={BrickMaterial.orange}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["2x1"].geometry}
+            position={[brickSize * 4, brickHeight * 12, 0]}
+            material={BrickMaterial.pink}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1centerconnector"].geometry}
+            position={[brickSize * 4, brickHeight * 13, 0]}
+            rotation={[0, fullRotation * 0.25, 0]}
+            material={BrickMaterial.pink}
+          />
+
+          <mesh
+            geometry={unicorn.meshes["1x1flatsloped^2"].geometry}
+            position={[brickSize * 5, brickHeight * 12, brickSize * 0.5]}
+            rotation={[0, fullRotation * 0.5, 0]}
+            material={BrickMaterial.pink}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1flatsloped^2"].geometry}
+            position={[brickSize * 5, brickHeight * 12, brickSize * -0.5]}
+            rotation={[0, fullRotation * 0.5, 0]}
+            material={BrickMaterial.pink}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1flatslanted^2"].geometry}
+            position={[brickSize * 6, brickHeight * 10, 0]}
+            rotation={[0, fullRotation * 0.5, 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1horn"].geometry}
+            position={[brickSize * 4, brickHeight * 14, 0]}
+            material={BrickMaterial.gold}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x2^3slopedconnector"].geometry}
+            position={[brickSize * 6.7, brickHeight * 7.5, 0]}
+            rotation={[fullRotation * 0.25, 0, fullRotation * -0.25]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x2flatcircle"].geometry}
+            position={[brickSize * 4.5, brickHeight * 9.5, brickSize * 1.2]}
+            rotation={[fullRotation * 0.25, 0, 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x2flatcircle"].geometry}
+            position={[brickSize * 4.5, brickHeight * 9.5, brickSize * -1.2]}
+            rotation={[fullRotation * -0.25, 0, 0]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1^3tubeconnector"].geometry}
+            position={[brickSize * 3.5, brickHeight * 10, brickSize * -0.5]}
+            rotation={[0, fullRotation * 0.5, 0]}
+            material={BrickMaterial.red}
+          />
+          <mesh
+            geometry={unicorn.meshes["2x1^3tubeconnector"].geometry}
+            position={[brickSize * 3.5, brickHeight * 10, brickSize * 0.5]}
+            rotation={[0, fullRotation * 0.5, 0]}
+            material={BrickMaterial.red}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1ear"].geometry}
+            position={[brickSize * 3, brickHeight * 12, brickSize * -1.4]}
+            rotation={[0, fullRotation * 0.25, fullRotation * 0.25]}
+            material={BrickMaterial.white}
+          />
+          <mesh
+            geometry={unicorn.meshes["1x1ear"].geometry}
+            position={[brickSize * 3, brickHeight * 12, brickSize * 1.4]}
+            rotation={[0, fullRotation * -0.25, fullRotation * 0.25]}
+            material={BrickMaterial.white}
+          />
         </group>
       </group>
     </group>

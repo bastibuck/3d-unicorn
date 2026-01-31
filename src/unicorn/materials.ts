@@ -18,6 +18,7 @@ const colors = {
   grey: "#a7a7a7",
   turquoiseLight: "#94f2f8",
   turquoiseDark: "#02aaa3",
+  gold: "#e79a0e",
 };
 
 const BrickMaterial = Object.entries(colors).reduce(
@@ -29,7 +30,7 @@ const BrickMaterial = Object.entries(colors).reduce(
 
     return materials;
   },
-  {} as Record<keyof typeof colors, THREE.MeshStandardMaterial>
+  {} as Record<keyof typeof colors, THREE.MeshStandardMaterial>,
 );
 
 const MaterialDebugConfig: React.FC = () => {
@@ -76,12 +77,12 @@ const MaterialDebugConfig: React.FC = () => {
             value: string;
             onChange: (color: string) => void;
           }
-        >
+        >,
       ),
     },
     {
       collapsed: true,
-    }
+    },
   );
 
   return null;

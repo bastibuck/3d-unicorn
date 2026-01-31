@@ -28,7 +28,7 @@ const Experience: React.FC = () => {
         enablePan={false}
         minPolarAngle={0.35}
         maxPolarAngle={1.5}
-        minDistance={12}
+        minDistance={20}
         maxDistance={55}
       />
     </>
